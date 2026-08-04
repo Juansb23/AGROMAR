@@ -1,0 +1,55 @@
+.topbar{
+
+    background:var(--primary-dark);
+
+    color:white;
+
+    font-size:.9rem;
+
+}
+
+.topbar-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    height:45px;
+
+}
+
+.left,
+.right{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+.left span,
+.right a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.right a{
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+.right a:hover{
+
+    color:var(--secondary);
+
+}

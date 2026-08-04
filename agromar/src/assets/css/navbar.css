@@ -1,0 +1,129 @@
+.header{
+
+    background:white;
+
+    box-shadow:var(--shadow);
+
+    position:sticky;
+    
+    top:0;
+
+    z-index:1000;
+
+}
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    height:90px;
+
+}
+
+.logo img{
+    width:180px;
+
+    height:auto;
+
+    display:block;
+}
+
+nav{
+
+    display:flex;
+
+    gap:30px;
+
+    font-weight:600;
+
+}
+
+nav a{
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:var(--primary);
+
+}
+
+.actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.search{
+
+    display:flex;
+
+    border:1px solid var(--border);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.search input{
+
+    border:none;
+
+    outline:none;
+
+    padding:12px 15px;
+
+    width:250px;
+
+}
+
+.search button{
+
+    background:var(--primary);
+
+    color:white;
+
+    border:none;
+
+    width:50px;
+
+}
+
+.icon{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.icon:hover{
+
+    background:var(--secondary);
+
+    color:black;
+
+}
