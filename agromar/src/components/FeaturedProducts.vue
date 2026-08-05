@@ -14,32 +14,39 @@
 
       </div>
 
-      <div class="products">
 
-        <div
-          class="product"
-          v-for="product in products"
-          :key="product.id"
-        >
+      <div v-if="loading" class="loading"> 
+      Cargando productos...
 
-          <img :src="product.image">
+      </div>
 
-          <h3>{{ product.name }}</h3>
+      <div v-else class="products">
 
-          <p class="price">
+       <div
+  class="product"
+  v-for="product in products"
+  :key="product.id"
+>
 
-            $ {{ product.price }}
+    <img
+        :src="product.image"
+        :alt="product.name"
+    >
 
-          </p>
+    <div class="product-info">
 
-          <button>
+        <h3>{{ product.name }}</h3>
 
+        <p class="price">
+            $ {{ Number(product.price).toLocaleString("es-CO") }}
+        </p>
+
+        <button class="btn-cart">
             Agregar al carrito
+        </button>
 
-          </button>
-
-        </div>
-
+    </div>
+</div>
       </div>
 
     </div>
@@ -49,34 +56,24 @@
 
 <script setup>
 
-import { ref } from 'vue'
+import { onMounted } from "vue";
+import { storeToRefs } from "pinia";
+import { useProductStore } from "../stores/productStore";
 
-const products = ref([
-  {
-    id: 1,
-    name: "Motobomba Sukiyama",
-    price: "1.250.000",
-    image: "/images/productos/motobomba.jpg"
-  },
-  {
-    id: 2,
-    name: "Ahoyador",
-    price: "980.000",
-    image: "/images/productos/ahoyador.jpg"
-  },
-  {
-    id: 3,
-    name: "Guadaña",
-    price: "1.450.000",
-    image: "/images/productos/guadana.jpg"
-  },
-  {
-    id: 4,
-    name: "Fumigadora",
-    price: "850.000",
-    image: "/images/productos/fumigadora.jpg"
-  }
-])
+const productStore = useProductStore();
+
+const { products, loading } = storeToRefs(productStore);
+import { watch } from "vue";
+
+watch(products, (value) => {
+  console.log("Productos cargados:", value);
+});
+
+onMounted(async () => {
+  await productStore.fetchProducts();
+
+  console.log("Productos cargados:", products.value);
+});
 
 </script>
 
